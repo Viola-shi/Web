@@ -1,0 +1,25 @@
+@font-face {
+    font-family: 'MyCustomFont';
+    src: url('../../font/static/JosefinSans-Italic.ttf') format('ttf');
+    font-weight: normal;
+    font-style: normal;
+  }
+  
+  h1 {
+    font-family: 'MyCustomFont', sans-serif;
+    font-size: 50px;
+    color: #333;
+    text-align: center;
+    margin-top: 32px;
+    margin-bottom: 16px;
+  }
+  body {
+    width: 1900px;
+    height: 1080px;
+    margin: 0;
+    padding: 0;
+    background-image: url('../../picture/saturn.png');
+    background-size: 100% 100%;
+    background-position: center center;
+    background-repeat: no-repeat;
+  }
