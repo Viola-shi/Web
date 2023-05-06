@@ -1,5 +1,6 @@
 import React, { useState } from 'react';
 import "./PublicBoard.css";
+import axios from "axios";
 
 function PublicBoard(props) {
   const [announcement, setAnnouncement] = useState('');
@@ -11,7 +12,22 @@ function PublicBoard(props) {
 
   const handleAnnouncementSubmit = (event) => {
     event.preventDefault();
-    setAnnouncement('');
+
+    const post = {
+        post: announcement,
+        date: new Date()
+    }
+
+    const sendPost = axios.create({
+        baseURL: `http://localhost:8000/users/${props.userId}/posts`,
+        timeout: 1000,
+        headers: {'X-Custom-Header': 'foobar'}
+    })
+
+    sendPost.post("", post)
+        .catch(e => {
+            alert(e.response.data.message);
+        })
   };
 
   return (

@@ -11,6 +11,7 @@ import Background from './background';
 const Homepage = () => {
 
     const [page, setPage] = useState("Login");
+    const [userId, setUserId] = useState("");
 
     const handlePageToSignup = () => {
         setPage("Signup")
@@ -20,8 +21,9 @@ const Homepage = () => {
         setPage("Login");
     }
 
-    const handlePageToBoard = () => {
+    const handlePageToBoard = (userId) => {
         setPage("Board");
+        setUserId(userId);
     }
 
     const handlePageToProfile = () => {
@@ -38,14 +40,17 @@ const Homepage = () => {
 
     return (
         <div>
-            {page === "Login" ? <LoginForm handlePageToSignup = {handlePageToSignup} handlePageToBoard = {handlePageToBoard} /> : null}
-            {page === "Board" ? <Board handlePageToLogin = {handlePageToLogin} handlePageToProfile = {handlePageToProfile} handlePageToMessage = {handlePageToMessage} handlePageToMyPosts = {handlePageToMyPosts}/> : null}
-            {page === "Signup" ? <SignupForm handlePageToLogin = {handlePageToLogin} /> : null}
-            {page === "Profile" ? <Profile handlePageToBoard = {handlePageToBoard} /> : null}
-            {page === "Message" ? <Message handlePageToBoard = {handlePageToBoard} /> : null}
-            {page === "MyPosts" ? <MyPosts handlePageToBoard = {handlePageToBoard} /> : null}
+            {page === "Login" ? <LoginForm handlePageToSignup={handlePageToSignup} handlePageToBoard={handlePageToBoard}
+                                           userId={userId}/> : null}
+            {page === "Board" ? <Board handlePageToLogin={handlePageToLogin} handlePageToProfile={handlePageToProfile}
+                                       handlePageToMessage={handlePageToMessage}
+                                       handlePageToMyPosts={handlePageToMyPosts} userId={userId}/> : null}
+            {page === "Signup" ? <SignupForm handlePageToLogin={handlePageToLogin}/> : null}
+            {page === "Profile" ? <Profile handlePageToBoard={handlePageToBoard}/> : null}
+            {page === "Message" ? <Message handlePageToBoard={handlePageToBoard}/> : null}
+            {page === "MyPosts" ? <MyPosts handlePageToBoard={handlePageToBoard}/> : null}
         </div>
-    )
+    );
 }
 
 

@@ -31,7 +31,7 @@ class SignupForm extends React.Component {
     }
 
     const signUpAPI = axios.create({
-      baseURL: 'http://localhost:3000/users/api',
+      baseURL: 'http://localhost:8000/users/api',
       timeout: 1000,
       headers: {'X-Custom-Header': 'foobar'}
     });

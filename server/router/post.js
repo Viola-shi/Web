@@ -3,7 +3,7 @@ const router = express.Router();
 const Post = require("../schema/post");
 const User = require("../schema/user");
 
-router.post("/:userId/posts", async (req, res) => {
+router.post("/users/:userId/posts", async (req, res) => {
     try {
         const post = new Post({
             post: req.body.post,
@@ -25,7 +25,7 @@ router.post("/:userId/posts", async (req, res) => {
     }
 })
 
-router.delete("/:userId/posts/:postId/api/deletePost", async (req, res) => {
+router.delete("/users/:userId/posts/:postId/api/deletePost", async (req, res) => {
     try {
         const post = await Post.findById(req.params.postId);
         const user = await User.findById(req.params.userId);
