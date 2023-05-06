@@ -8,6 +8,7 @@ router.post("/:userId/posts", async (req, res) => {
         const post = new Post({
             post: req.body.post,
             user: req.params.userId,
+            date: req.body.date
         })
 
         await post.save();
@@ -46,19 +47,32 @@ router.delete("/:userId/posts/:postId/api/deletePost", async (req, res) => {
     }
 })
 
-router.post("/:userId/publicPosts/:postId/api/like/", async(req,res)=>{
+router.post("/publicPosts/:postId/api/like/", async (req,res)=>{
     try {
         const post = await Post.findById(req.params.postId);
-        if (post.likes.includes(req.params.userId)) {
-            post.likes.pull(req.params.userId);
+        if (post.likes.includes(req.body.userId)) {
+            post.likes.pull(req.body.userId);
             await post.save();
         } else {
-            post.likes.push(req.params.userId);
+            post.likes.push(req.body.userId);
             await post.save();
         }
         return res.status(200).json({status:200, message:"like or unlike successfully"});
-    }catch(e){
+    } catch (e) {
         return res.status(500).json({status:500, message:e.message});
+    }
+})
+
+router.get("/publicPosts", async (req, res) => {
+    try {
+        const posts = await Post.find({}).aggregate([
+            {"$sort" : {"date" : -1}},
+            {"$limit": 15}
+        ]).toArray();
+
+        res.status(201).send(posts)
+    } catch (e) {
+        res.status(500).json({status: 500, message: e.message});
     }
 })
 

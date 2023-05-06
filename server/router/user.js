@@ -11,6 +11,10 @@ router.post("/api/signup", async (req, res) => {
             return res.status(400).json({status: 400, message: "Email already registered"});
         }
 
+        if (req.body.password.length < 8) {
+            return res.status(403).json({status: 403, message: "Password must have at least 8 characters"})
+        }
+
         const user = new User({
             name: req.body.name,
             email: req.body.email,
@@ -49,8 +53,7 @@ router.post("/api/login", async (req, res) => {
 
 router.delete("/:userId/api/deleteUser", async (req, res) => {
     try {
-        const id = req.params.userId;
-        const user = await User.findById(id);
+        const user = await User.findById(req.params.userId);
         if (!user) {
             return res.status(403).json({status: 403, message: "Can't delete the user doesn't exist"});
         }

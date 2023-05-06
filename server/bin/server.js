@@ -12,7 +12,7 @@ const PORT = 3000;
 
 
 app.use("/users", userRouter);
-app.use("/users", postRouter);
+app.use("", postRouter);
 app.use("/users", friendRouter);
 
 app.listen(PORT, () => {

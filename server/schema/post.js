@@ -1,7 +1,6 @@
 const mongoose = require("mongoose");
 
 const db = require("../db/connection_mongoose");
-const {Int32} = require("mongodb");
 
 let Schema = mongoose.Schema;
 
@@ -23,9 +22,14 @@ const postSchema = new Schema({
     likes: [{
         type: mongoose.ObjectId,
         ref: "User"
-    }]
+    }],
 
-})
+    date: {
+        type: Date,
+        required: true
+    }
+
+});
 
 const Post = db.model('posts', postSchema);
 

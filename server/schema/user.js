@@ -29,6 +29,11 @@ const userSchema = new Schema({
     friends: [{
         type: mongoose.ObjectId,
         ref: "User"
+    }],
+
+    chats: [{
+        type: mongoose.ObjectId,
+        ref: "Chat"
     }]
 })
 
