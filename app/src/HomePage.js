@@ -6,7 +6,6 @@ import Board from './Board';
 import Profile from './Profile';
 import Message from './Message';
 import MyPosts from './MyPosts';
-import Background from './background';
 
 const Homepage = () => {
 
@@ -21,9 +20,13 @@ const Homepage = () => {
         setPage("Login");
     }
 
-    const handlePageToBoard = (userId) => {
+    const handlePageToBoardWithId = (userId) => {
         setPage("Board");
         setUserId(userId);
+    }
+
+    const handlePageToBoard = () => {
+        setPage("Board");
     }
 
     const handlePageToProfile = () => {
@@ -40,13 +43,13 @@ const Homepage = () => {
 
     return (
         <div>
-            {page === "Login" ? <LoginForm handlePageToSignup={handlePageToSignup} handlePageToBoard={handlePageToBoard}
+            {page === "Login" ? <LoginForm handlePageToSignup={handlePageToSignup} handlePageToBoard={handlePageToBoardWithId}
                                            userId={userId}/> : null}
             {page === "Board" ? <Board handlePageToLogin={handlePageToLogin} handlePageToProfile={handlePageToProfile}
                                        handlePageToMessage={handlePageToMessage}
                                        handlePageToMyPosts={handlePageToMyPosts} userId={userId}/> : null}
             {page === "Signup" ? <SignupForm handlePageToLogin={handlePageToLogin}/> : null}
-            {page === "Profile" ? <Profile handlePageToBoard={handlePageToBoard}/> : null}
+            {page === "Profile" ? <Profile handlePageToBoard={handlePageToBoard} userId={userId}/> : null}
             {page === "Message" ? <Message handlePageToBoard={handlePageToBoard}/> : null}
             {page === "MyPosts" ? <MyPosts handlePageToBoard={handlePageToBoard}/> : null}
         </div>

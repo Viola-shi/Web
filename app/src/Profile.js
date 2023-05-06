@@ -1,11 +1,31 @@
 import './Profile.css';
 import saturn from './saturn.jpeg';
 import React, { useState } from 'react';
+import axios from "axios"
 
 function Profile(props) {
+
+    const [userName, setUserName] = useState("");
+    const [email, setEmail] = useState("");
+
     const handlePageToBoard = () => {
         props.handlePageToBoard();
       }
+
+    const requestProfile = axios.create({
+        baseURL: `http://localhost:8000/users/${props.userId}`,
+        timeout: 1000,
+        headers: {'X-Custom-Header': 'foobar'}
+    })
+
+    requestProfile.get("")
+        .then(res => {
+            setUserName(res.data.name);
+            setEmail(res.data.email);
+        })
+        .catch(e => {
+            console.log(e.response.data.message);
+        })
 
     return (
     <div className="Profile">
@@ -19,8 +39,8 @@ function Profile(props) {
                 <span className = "profile-board-title">Profile</span>
                 </div>
                 <div className="profile-information">
-                <span className = "information">User Name :</span>
-                <div className = "information">Email :</div>
+                <span className = "information">User Name : {userName}</span>
+                <div className = "information">Email : {email}</div>
                 </div>
                 <button className='back-button' onClick={handlePageToBoard}>Back To PublicBoard</button>
             </div>
