@@ -20,6 +20,9 @@ function PublicBoard(props) {
         <div className="public-board-header">
           <span className = "board-title">Public Board</span>
         </div>
+        <div className="public-board-frame">
+        {}
+        </div>
       </div>
       <div className="public-board-announcements">
       <span className = "announcement-title">Announcements</span>

@@ -112,6 +112,18 @@
     width: 95%;
     height: 400px;
   }
+
+  .public-board-frame {
+    background-color: rgba(242, 227, 190, 0.8);
+    border: 1px solid black;
+    padding: 10px;
+    margin: 10px;
+    border-radius: 10px;
+    margin-right: 30px;
+    width: 95%;
+    height: 300px;
+    overflow-y: scroll; /* 显示垂直滚动条 */
+  }
   
   .board-title {
     color: black;

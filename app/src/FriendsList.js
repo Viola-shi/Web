@@ -8,11 +8,9 @@ function FriendsList(props) {
     <div className="friends-list">
         <div className="friends-list-container">
         <span className = "friend-title">Friends List</span>
-        <ul>
-            {friends.map((friend, index) => (
-            <li key={index}>{friend}</li>
-            ))}
-        </ul>
+        <div className="friends-list-frame">
+        {friends}
+        </div>
         </div>
     </div>
   );

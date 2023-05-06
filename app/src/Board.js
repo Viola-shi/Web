@@ -19,6 +19,14 @@ function Board(props) {
     props.handlePageToProfile();
   };
 
+  const handlePageToMessage = () => {
+    props.handlePageToMessage();
+  };
+
+  const handlePageToMyPosts = () => {
+    props.handlePageToMyPosts();
+  };
+
   const handleProfileMenuHover = () => {
     setShowProfileMenu(true);
   };
@@ -43,19 +51,20 @@ function Board(props) {
         <img src={saturn} alt="Logo" className="logo" />
         <h1 className="titleLogo">GRAVITY</h1>
       </div>
-      <div className="menu" onMouseEnter={handleProfileMenuHover} onMouseLeave={handleProfileMenuLeave}>
+
+      <div className="menu">
         <div className="profileMenu">
-          <span className="menutext" onClick={handlePageToProfile}>Profile</span>
+          <span className="menutext" onClick={handlePageToProfile}  onMouseEnter={handleProfileMenuHover} onMouseLeave={handleProfileMenuLeave}>Profile</span>
           {showProfileMenu && (
-            <div className="profileMenuDropdown">
+            <div className="profileMenuDropdown"  onMouseEnter={handleProfileMenuHover} onMouseLeave={handleProfileMenuLeave}>
               <div className="profileMenuItem" onClick={handlePageToLogin}>
                 Logout
               </div>
             </div>
               )}
-          <span className="menutext">Message</span>
-          <span className="menutext">MyPosts</span>
-          <form onSubmit={handleSearchSubmit} className="search-form">
+          <span className="menutext" onClick={handlePageToMessage}>Message</span>
+          <span className="menutext" onClick={handlePageToMyPosts}>MyPosts</span>
+          <form onSubmit={handleSearchSubmit} class="search-form">
             <input
               type="text"
               placeholder="Search for users or content"
