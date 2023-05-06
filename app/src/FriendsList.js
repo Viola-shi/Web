@@ -1,5 +1,6 @@
 import React, { useState } from 'react';
 import "./FriendsList.css";
+import Friend from './Friend';
 
 function FriendsList(props) {
     const friends = ['Alice', 'Bob', 'Charlie', 'David', 'Eve'];
@@ -9,7 +10,7 @@ function FriendsList(props) {
         <div className="friends-list-container">
         <span className = "friend-title">Friends List</span>
         <div className="friends-list-frame">
-        {friends}
+        <Friend/>
         </div>
         </div>
     </div>
