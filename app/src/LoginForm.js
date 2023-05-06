@@ -15,40 +15,34 @@ class LoginForm extends React.Component {
     this.setState({ [name]: value });
   }
 
-  handleSubmit = (event) => {
-    event.preventDefault();
-    const { name, email, password } = this.state;
 
-    // 表单验证逻辑
-    if (!name || !email || !password) {
-      alert('Please fill in all fields');
-      return;
-    }
 
-    if (!/\S+@\S+\.\S+/.test(email)) {
-      alert('Please enter a valid email address');
-      return;
-    }
+  handlePageToSignup = () => {
+    this.props.handlePageToSignup();
+  }
 
-    if (password.length < 6) {
-      alert('Password must be at least 6 characters long');
-      return;
-    }
-
-    // Code for handling sign-up form submission
+  handlePageToBoard = () => {
+    this.props.handlePageToBoard();
   }
 
 
   render() {
     return (
-      <form onSubmit={this.handleSubmit}>
-        <h3>Log In</h3>
-        <label htmlFor="email"><b>Email</b></label>
-        <input type="text" placeholder="Enter Email" name="email" value={this.state.email} onChange={this.handleChange} required />
-        <label htmlFor="password"><b>Password</b></label>
-        <input type="password" placeholder="Enter Password" name="password" value={this.state.password} onChange={this.handleChange} required />
-        <button type="submit">Login</button>
-      </form>
+      <div>
+        <h1 className="titleMainpage">GRAVITY</h1>
+        <form onSubmit={this.handleSubmit}>
+          <h3>Log In</h3>
+          <label htmlFor="email"><b>Email</b></label>
+          <input type="text" placeholder="Enter Email" name="email" value={this.state.email} onChange={this.handleChange} required />
+          <label htmlFor="password"><b>Password</b></label>
+          <input type="password" placeholder="Enter Password" name="password" value={this.state.password} onChange={this.handleChange} required />
+          <button type="submit" onClick={this.handlePageToBoard}>Login</button>
+        </form>
+        <div className='click'>
+          <h2>If you don't have an account:</h2>
+          <button type="pageToSignup" onClick={this.handlePageToSignup}>Signup</button>
+        </div>
+      </div>
     );
   }
 }

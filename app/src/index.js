@@ -1,14 +1,18 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
-import Board from './Board';
-{/*import App from './App';*/}
+import App from './App';
+import Profile from './Profile';
+
+// simport Board from './Board';
+
+
 
 
 ReactDOM.render(
   <React.StrictMode>
-    {/*<App />*/}
-    <Board/>
-
+    {/* <Profile/> */}
+    <App />
+    {/* <Board/> */}
   </React.StrictMode>,
   document.getElementById('root')
 );

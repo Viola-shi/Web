@@ -1,17 +1,22 @@
 /* PublicBoard component styles */
 
-.public-board {
+  /* .public-board {
     display: flex;
     flex-direction: column;
     justify-content: center;
     align-items: center;
     padding: 20px;
     border-radius: 5px;
+    text-align: center;
+    width: 500px;
+    height: 300px;
+    margin-left: 10%;
+    margin-right: 10%;
   }
   
-  .public-board h1 {
+  .public-board .title1 {
     margin-bottom: 20px;
-    font-size: 36px;
+    font-size: 35px;
     font-weight: bold;
     text-align: center;
     color: #333;
@@ -29,6 +34,8 @@
     display: flex;
     flex-direction: column;
     align-items: center;
+    width: 40%;
+    margin-left: 10%;
   }
   
   .public-board label {
@@ -81,5 +88,89 @@
       width: 50%;
       margin: 50px auto;
     }
+  }
+   */
+
+  .public-board {
+    background-color: rgba(242, 227, 190, 0.8);
+    border: 1px solid black;
+    padding: 10px;
+    margin: 10px;
+    border-radius: 10px;
+    margin-right: 100px;
+    height: 700px;
+    width: 80%; 
+  }
+  
+  .public-board-container {
+    background-color: rgba(242, 227, 190, 0.8);
+    border: 1px solid black;
+    padding: 10px;
+    margin: 10px;
+    border-radius: 10px;
+    margin-right: 30px;
+    width: 95%;
+    height: 400px;
+  }
+  
+  .board-title {
+    color: black;
+    font-size: 30px;
+    padding: 10px;
+    margin: 10px;
+  }
+  
+  .public-board-announcements{
+    background-color: rgba(242, 227, 190, 0.8);
+    border: 1px solid black;
+    padding: 10px;
+    margin: 10px;
+    border-radius: 10px;
+    margin-right: 100px;
+    width: 95%;
+    height: 200px;
+  }
+
+  .announcement-section {
+    background-color: rgba(255, 255, 255, 0.5);
+    border: 1px solid black;
+    padding: 10px;
+    margin: 10px;
+  }
+  
+  .announcement-title {
+    color: black;
+    font-size: 30px;
+    padding: 10px;
+    margin: 10px;
+  }
+  
+  .announcement-form {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    margin-bottom: 10px;
+  }
+  
+  .announcement-input {
+    padding: 10px;
+    font-size: 16px;
+    border: none;
+    border-radius: 5px;
+    margin-right: 10px;
+    width: 650px;
+    height: 80px;
+    margin-top: 10px;
+  }  
+  
+  .announcement-button {
+    background-color: rgb(200, 171, 98);
+    color: rgb(84, 60, 9);
+    border: none;
+    border-radius: 5px;
+    padding: 10px;
+    font-size: 16px;
+    cursor: pointer;
+    float: right;
   }
   

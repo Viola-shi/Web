@@ -3,10 +3,28 @@ form {
     flex-direction: column;
     align-items: center;
   }
+
+  .titleMainpage {
+    font-family: 'MyCustomFont', sans-serif;
+    font-size: 80px;
+    font-weight: 300;
+    letter-spacing: 0.1em;
+    color: rgb(242, 227, 190);
+    text-align: center;
+    margin-top: 32px;
+    margin-bottom: 16px;
+}
   
   h1 {
     font-size: 30px;
     color: #333;
+  }
+
+  h2 {
+    font-size: 18px;
+    font-weight: 500;
+    letter-spacing: 0.1em;
+    color:rgb(242, 227, 190);
   }
 
   h3 {
@@ -56,6 +74,13 @@ form {
     border: none;
     border-radius: 4px;
     cursor: pointer;
+  }
+
+  .click {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    margin: 10px;
   }
 
   
