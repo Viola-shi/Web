@@ -9,6 +9,7 @@ import Background from './background';
 const Homepage = () => {
 
     const [page, setPage] = useState("Login");
+    const [userId, setUserId] = useState("");
 
     const handlePageToSignup = () => {
         setPage("Signup")
@@ -18,8 +19,9 @@ const Homepage = () => {
         setPage("Login");
     }
 
-    const handlePageToBoard = () => {
+    const handlePageToBoard = (userId) => {
         setPage("Board");
+        setUserId(userId);
     }
 
     const handlePageToProfile = () => {
@@ -29,7 +31,7 @@ const Homepage = () => {
     return (
         <div>
             {page === "Login" ? <LoginForm handlePageToSignup = {handlePageToSignup} handlePageToBoard = {handlePageToBoard} /> : null}
-            {page === "Board" ? <Board handlePageToLogin = {handlePageToLogin} handlePageToProfile = {handlePageToProfile}/> : null}
+            {page === "Board" ? <Board handlePageToLogin = {handlePageToLogin} handlePageToProfile = {handlePageToProfile} userId = {userId}/> : null}
             {page === "Signup" ? <SignupForm handlePageToLogin = {handlePageToLogin} /> : null}
             {page === "Profile" ? <Profile handlePageToBoard = {handlePageToBoard} /> : null}
         </div>

@@ -83,6 +83,11 @@ form {
     margin: 10px;
   }
 
+  .errorMessage {
+    margin-bottom: 10px;
+    font-size: 20px;
+    color: #ff1845;
+  }
   
   
   .error-popup {

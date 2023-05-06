@@ -16,7 +16,7 @@ function Board(props) {
   };
 
   const handlePageToProfile = () => {
-    this.props.handlePageToProfile();
+    props.handlePageToProfile();
   };
 
   const handleProfileMenuHover = () => {
@@ -45,7 +45,7 @@ function Board(props) {
       </div>
       <div className="menu" onMouseEnter={handleProfileMenuHover} onMouseLeave={handleProfileMenuLeave}>
         <div className="profileMenu">
-          <span className="menutext" onclick={handlePageToProfile}>Profile</span>
+          <span className="menutext" onClick={handlePageToProfile}>Profile</span>
           {showProfileMenu && (
             <div className="profileMenuDropdown">
               <div className="profileMenuItem" onClick={handlePageToLogin}>
@@ -55,7 +55,7 @@ function Board(props) {
               )}
           <span className="menutext">Message</span>
           <span className="menutext">MyPosts</span>
-          <form onSubmit={handleSearchSubmit} class="search-form">
+          <form onSubmit={handleSearchSubmit} className="search-form">
             <input
               type="text"
               placeholder="Search for users or content"

@@ -1,6 +1,7 @@
 
 import React from 'react';
 import './LoginForm.css';
+import axios from "axios";
 
 class SignupForm extends React.Component {
   constructor(props) {
@@ -8,7 +9,10 @@ class SignupForm extends React.Component {
     this.state = {
       name: '',
       email: '',
-      password: ''
+      password: '',
+      res: null,
+      error: true
+
     };
   }
 
@@ -20,26 +24,24 @@ class SignupForm extends React.Component {
   handleSubmit = (event) => {
     event.preventDefault();
 
-    // Check if name is not empty
-    if (!this.state.name) {
-      alert('Please enter your name.');
-      return;
+    const signup = {
+      name: this.state.name,
+      email: this.state.email,
+      password: this.state.password
     }
 
-    // Check if email is valid
-    const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
-    if (!emailRegex.test(this.state.email)) {
-      alert('Please enter a valid email.');
-      return;
-    }
+    const signUpAPI = axios.create({
+      baseURL: 'http://localhost:3000/users/api',
+      timeout: 1000,
+      headers: {'X-Custom-Header': 'foobar'}
+    });
 
-    // Check if password is at least 8 characters long
-    if (this.state.password.length < 8) {
-      alert('Password must be at least 8 characters long.');
-      return;
-    }
-
-    // Code for handling sign-up form submission
+    signUpAPI.post("/signup", signup)
+        .then(this.handlePageToLogin)
+        .catch(e => {
+          console.log(e);
+          this.setState({res: e.response.data.message, error: true})
+        })
   }
 
   handlePageToLogin = () => {
@@ -48,23 +50,28 @@ class SignupForm extends React.Component {
 
   render() {
     return (
-      <div>
-        <h1 className="titleMainpage">GRAVITY</h1>
-        <form onSubmit={this.handleSubmit}>
-          <h3>Sign Up</h3>
-          <label htmlFor="name"><b>Name</b></label>
-          <input type="text" placeholder="Enter Name" name="name" value={this.state.name} onChange={this.handleChange} required />
-          <label htmlFor="email"><b>Email</b></label>
-          <input type="text" placeholder="Enter Email" name="email" value={this.state.email} onChange={this.handleChange} required />
-          <label htmlFor="password"><b>Password</b></label>
-          <input type="password" placeholder="Enter Password" name="password" value={this.state.password} onChange={this.handleChange} required />
-          <button type="submit">Sign Up</button>
-        </form>
+        <div>
+          <h1 className="titleMainpage">GRAVITY</h1>
+          <form onSubmit={this.handleSubmit}>
+            <h3>Sign Up</h3>
+            <label htmlFor="name"><b>Name</b></label>
+            <input type="text" placeholder="Enter Name" name="name" value={this.state.name} onChange={this.handleChange}
+                   required/>
+            <label htmlFor="email"><b>Email</b></label>
+            <input type="text" placeholder="Enter Email" name="email" value={this.state.email}
+                   onChange={this.handleChange} required/>
+            <label htmlFor="password"><b>Password</b></label>
+            <input type="password" placeholder="Enter Password" name="password" value={this.state.password}
+                   onChange={this.handleChange} required/>
+            {this.state.error ? <div className="errorMessage">{this.state.res}</div> : null}
+            <button type="submit">Sign Up</button>
 
-        <div className='click'>
-          <button type="pageToLogin" onClick={this.handlePageToLogin}>Back</button>
+          </form>
+
+          <div className='click'>
+            <button type="pageToLogin" onClick={this.handlePageToLogin}>Back</button>
+          </div>
         </div>
-      </div>
     );
   }
 }
