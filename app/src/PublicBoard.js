@@ -1,6 +1,7 @@
 import React, { useState } from 'react';
 import "./PublicBoard.css";
 import axios from "axios";
+import Post from "./Post" ;
 
 function PublicBoard(props) {
   const [announcement, setAnnouncement] = useState('');
@@ -37,7 +38,7 @@ function PublicBoard(props) {
           <span className = "board-title">Public Board</span>
         </div>
         <div className="public-board-frame">
-        {}
+        <Post/>
         </div>
       </div>
       <div className="public-board-announcements">

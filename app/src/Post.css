@@ -1,0 +1,24 @@
+.Post{
+    background-color: rgb(237, 227, 201);
+    border: 1px solid black;
+    padding: 10px;
+    margin: 10px;
+    border-radius: 10px;
+    margin: 10px auto;
+    /* height: 50px; */
+    width: 90%; 
+}
+
+.user{
+    font-family: 'MyCustomFont', sans-serif;
+    font-size: 10px;
+    font-weight: 500;
+    letter-spacing: 0.1em;
+    color: rgb(74, 64, 38);
+    text-align: left;
+}
+
+.post-container{
+    width: 90%;
+}
+
