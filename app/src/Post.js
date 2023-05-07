@@ -1,7 +1,32 @@
 import './Post.css';
-import React, { useState } from 'react';
+import React, {useEffect, useState} from 'react';
+import axios from "axios";
 
 function Post(props) {
+    const [user, setUser] = useState("");
+    const [content, setContent] = useState("");
+
+    const getUserName = () => {
+        const getUserName = axios.create({
+            baseURL: `http://localhost:8000/users/${props.post.user}`,
+            timeout: 1000,
+            headers: {'X-Custom-Header': 'foobar'}
+        })
+
+        getUserName.get("")
+            .then(res => {
+                setUser(res.data.name);
+                setContent(props.post.post);
+            })
+            .catch(e => {
+                console.log(e);
+            })
+    }
+
+    useEffect(getUserName);
+
+
+
 
     const [isLiked, setIsLiked] = useState(false);
     const [likeCount, setLikeCount] = useState(0);
@@ -17,9 +42,9 @@ function Post(props) {
 
     return (
     <div className="Post">
-        <span className = "user">User Name :</span>
+        <span className = "user">{user} :</span>
         <div className="post-container">
-        {'shdubushnfdxijd'}
+        {content}
         </div>
         <div className="like-button-container">
             <button className="like-button" onClick={handleLikeClick}>

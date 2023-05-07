@@ -2,9 +2,11 @@ import React, { useState } from 'react';
 import "./PublicBoard.css";
 import axios from "axios";
 import Post from "./Post" ;
+import {useEffect} from "react";
 
 function PublicBoard(props) {
   const [announcement, setAnnouncement] = useState('');
+  const [posts, setPosts] = useState([]);
 
   const handleAnnouncementChange = (event) => {
     setAnnouncement(event.target.value);
@@ -26,10 +28,30 @@ function PublicBoard(props) {
     })
 
     sendPost.post("", post)
+        .then(getPost)
         .catch(e => {
-            alert(e.response.data.message);
+            console.log(e);
         })
   };
+
+  function getPost() {
+      const getPost = axios.create({
+          baseURL: `http://localhost:8000/publicPosts`,
+          timeout: 1000,
+          headers: {'X-Custom-Header': 'foobar'}
+      })
+
+      getPost.get("")
+          .then(res => {
+              setPosts(res.data)
+          })
+          .catch(e => {
+              alert(e.response.data.message);
+          })
+  }
+
+  useEffect(getPost);
+
 
   return (
     <div className="public-board">
@@ -38,7 +60,7 @@ function PublicBoard(props) {
           <span className = "board-title">Public Board</span>
         </div>
         <div className="public-board-frame">
-        <Post/>
+            {posts.map(post => (<Post post={post}/>))}
         </div>
       </div>
       <div className="public-board-announcements">
