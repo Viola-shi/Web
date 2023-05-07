@@ -22,3 +22,13 @@
     width: 90%;
 }
 
+.like-button-container {
+    position: relative;
+    right: 30px;
+    margin-left: 600px;
+    margin-bottom: 0%;
+  }
+
+.like-button{
+    right: 30px;
+}

@@ -11,8 +11,8 @@ class SignupForm extends React.Component {
       email: '',
       password: '',
       res: null,
-      error: true
-
+      error: true,
+      showSuccess:false
     };
   }
 
@@ -37,7 +37,10 @@ class SignupForm extends React.Component {
     });
 
     signUpAPI.post("/signup", signup)
-        .then(this.handlePageToLogin)
+        .then(() => {
+          this.setState({ showSuccess: true });
+          setTimeout(this.handlePageToLogin, 3000);
+        })
         .catch(e => {
           console.log(e);
           this.setState({res: e.response.data.message, error: true})
@@ -67,6 +70,17 @@ class SignupForm extends React.Component {
             <button type="submit">Sign Up</button>
 
           </form>
+
+        
+          
+          {this.state.showSuccess ? (
+            <div className='container'>
+              <div className="successMessage">
+              Registration Successful! Redirecting to login page...
+              </div>
+            </div>
+          ) : null}
+          
 
           <div className='click'>
             <button type="pageToLogin" onClick={this.handlePageToLogin}>Back</button>

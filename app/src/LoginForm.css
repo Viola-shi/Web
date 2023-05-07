@@ -2,6 +2,7 @@ form {
     display: flex;
     flex-direction: column;
     align-items: center;
+    position: relative;
   }
 
   .titleMainpage {
@@ -101,5 +102,29 @@ form {
     font-size: 14px;
     border-radius: 4px;
     z-index: 1;
+  }
+  
+  .successMessage{
+    font-size: 18px;
+    font-weight: 500;
+    letter-spacing: 0.1em;
+    color: rgb(51, 35, 11);
+  }
+
+  .container {
+    position: absolute; /* 设置为绝对定位 */
+    top: 24%; /* 指定距离顶部的距离 */
+    left: 29%; /* 指定距离左侧的距离 */
+    width: 40%; /* 设置宽度为100% */
+    height: 50%; /* 设置高度为100% */
+    display: flex; /* 设置为flex布局 */
+    justify-content: center; /* 让内容水平居中 */
+    align-items: center; /* 让内容垂直居中 */
+    background-color: rgba(242, 227, 190, 0.8);
+    border: 1px solid black;
+    padding: 10px;
+    margin: 10px;
+    border-radius: 10px;
+    z-index: 999; /* 设置层叠顺序为999 */
   }
   
