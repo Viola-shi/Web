@@ -67,7 +67,7 @@ function Board(props) {
             )}
             <span className="menutext" onClick={handlePageToMessage}>Message</span>
             <span className="menutext" onClick={handlePageToMyPosts}>MyPosts</span>
-            <form onSubmit={handleSearchSubmit} class="search-form">
+            <form onSubmit={handleSearchSubmit} className="search-form">
               <input
                   type="text"
                   placeholder="Search for users or content"
@@ -83,7 +83,7 @@ function Board(props) {
           <PublicBoard userId={props.userId}/>
         </div>
         <div className="forms-left">
-          <FriendsList/>
+          <FriendsList userId={props.userId}/>
         </div>
       </div>
   );
