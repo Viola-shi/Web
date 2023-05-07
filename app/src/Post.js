@@ -32,7 +32,7 @@ function Post(props) {
     const handleLikeClick = () => {
         const likePost = axios.create({
             baseURL: `http://localhost:8000/publicPosts/${props.post._id}/api/like/`,
-            timeout: 5000,
+            timeout: 10000,
             headers: {'X-Custom-Header': 'foobar'}
         })
 
