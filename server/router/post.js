@@ -65,10 +65,10 @@ router.post("/publicPosts/:postId/api/like/", async (req,res)=>{
 
 router.get("/publicPosts", async (req, res) => {
     try {
-        const posts = await Post.find({}).aggregate([
+        const posts = await Post.aggregate([
             {"$sort" : {"date" : -1}},
             {"$limit": 15}
-        ]).toArray();
+        ]);
 
         res.status(201).send(posts)
     } catch (e) {
