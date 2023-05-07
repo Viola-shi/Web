@@ -53,18 +53,6 @@ function Post(props) {
     }
 
 
-    const [isLiked, setIsLiked] = useState(false);
-    const [likeCount, setLikeCount] = useState(0);
-  
-    const handleLikeClick = () => {
-        if (!isLiked) {
-        setLikeCount(likeCount + 1);
-        } else {
-        setLikeCount(likeCount - 1);
-        }
-        setIsLiked(!isLiked);
-    }
-
     return (
     <div className="Post">
         <span className = "user">{user} :</span>
