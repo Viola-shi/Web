@@ -46,7 +46,7 @@ function PublicBoard(props) {
               setPosts(res.data)
           })
           .catch(e => {
-              alert(e.response.data.message);
+              console.log(e);
           })
   }
 
@@ -60,7 +60,7 @@ function PublicBoard(props) {
           <span className = "board-title">Public Board</span>
         </div>
         <div className="public-board-frame">
-            {posts.map(post => (<Post post={post}/>))}
+            {posts.map(post => (<Post key={post._id} post={post} userId={props.userId}/>))}
         </div>
       </div>
       <div className="public-board-announcements">

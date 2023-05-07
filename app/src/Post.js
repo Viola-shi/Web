@@ -3,8 +3,11 @@ import React, {useEffect, useState} from 'react';
 import axios from "axios";
 
 function Post(props) {
+
     const [user, setUser] = useState("");
-    const [content, setContent] = useState("");
+    const [content, setContent] = useState(props.post.post);
+    const [isLiked, setIsLiked] = useState(props.post.likes.includes(props.userId));
+    const [likeCount, setLikeCount] = useState(props.post.likes.length);
 
     const getUserName = () => {
         const getUserName = axios.create({
@@ -16,7 +19,6 @@ function Post(props) {
         getUserName.get("")
             .then(res => {
                 setUser(res.data.name);
-                setContent(props.post.post);
             })
             .catch(e => {
                 console.log(e);
@@ -26,6 +28,29 @@ function Post(props) {
     useEffect(getUserName);
 
 
+  
+    const handleLikeClick = () => {
+        const likePost = axios.create({
+            baseURL: `http://localhost:8000/publicPosts/${props.post._id}/api/like/`,
+            timeout: 5000,
+            headers: {'X-Custom-Header': 'foobar'}
+        })
+
+
+        const userLike = {
+            userId: props.userId
+        }
+
+        likePost.post("", userLike)
+            .then(res => {
+                setLikeCount(res.data.likes.length);
+                setIsLiked(res.data.isLiked);
+            })
+
+            .catch(e => {
+                console.log(e);
+            })
+    }
 
 
     return (
@@ -33,6 +58,12 @@ function Post(props) {
         <span className = "user">{user} :</span>
         <div className="post-container">
         {content}
+        </div>
+        <div className="like-button-container">
+            <button className="like-button" onClick={handleLikeClick}>
+            {isLiked ? '❤️' : '🤍'}
+            {likeCount}
+            </button>
         </div>
     </div>
     )
