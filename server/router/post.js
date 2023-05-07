@@ -59,8 +59,12 @@ router.post("/publicPosts/:postId/api/like/", async (req,res)=>{
             await post.save();
             isLiked = true;
         }
-        return res.status(200).json({status:200, message:"like or unlike successfully", isLiked: isLiked,
-            likes: post.likes});
+        return res.status(200).json({
+            status: 200,
+            message: "like or unlike successfully",
+            isLiked: isLiked,
+            likes: post.likes
+        });
     } catch (e) {
         return res.status(500).json({status:500, message:e.message});
     }

@@ -31,10 +31,6 @@ const userSchema = new Schema({
         ref: "User"
     }],
 
-    chats: [{
-        type: mongoose.ObjectId,
-        ref: "Chat"
-    }]
 })
 
 const User = db.model('users', userSchema);
