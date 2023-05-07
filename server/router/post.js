@@ -50,14 +50,17 @@ router.delete("/users/:userId/posts/:postId/api/deletePost", async (req, res) =>
 router.post("/publicPosts/:postId/api/like/", async (req,res)=>{
     try {
         const post = await Post.findById(req.params.postId);
+        let isLiked = false
         if (post.likes.includes(req.body.userId)) {
             post.likes.pull(req.body.userId);
             await post.save();
         } else {
             post.likes.push(req.body.userId);
             await post.save();
+            isLiked = true;
         }
-        return res.status(200).json({status:200, message:"like or unlike successfully"});
+        return res.status(200).json({status:200, message:"like or unlike successfully", isLiked: isLiked,
+            likes: post.likes});
     } catch (e) {
         return res.status(500).json({status:500, message:e.message});
     }
@@ -71,6 +74,17 @@ router.get("/publicPosts", async (req, res) => {
         ]);
 
         res.status(201).send(posts)
+    } catch (e) {
+        res.status(500).json({status: 500, message: e.message});
+    }
+})
+
+router.get("/publicPosts/:postId", async (req, res) => {
+    try {
+        const post = await Post.findById(req.params.postId);
+        let isLiked = !post.likes.includes(req.body.userId);
+
+        res.status(200).json({isLiked: isLiked, likesCount: post.likes.length});
     } catch (e) {
         res.status(500).json({status: 500, message: e.message});
     }
