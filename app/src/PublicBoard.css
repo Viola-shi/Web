@@ -6,9 +6,10 @@
     margin: 10px;
     border-radius: 10px;
     margin-right: 100px;
+    margin-top: 20px;
     height: 700px;
     width: 80%; 
-  }
+    }
   
   .public-board-container {
     background-color: rgba(242, 227, 190, 0.8);

@@ -29,12 +29,15 @@ function Board(props) {
 
   const handleProfileMenuHover = () => {
     setShowProfileMenu(true);
+
   };
+
 
   const handleProfileMenuLeave = () => {
     setShowProfileMenu(false);
-  };
+  }
 
+  
   const handleSearchChange = (event) => {
     setSearch(event.target.value);
   };
@@ -53,14 +56,11 @@ function Board(props) {
         </div>
 
         <div className="menu">
-          <div className="profileMenu">
-            <span className="menutext" onClick={handlePageToProfile} onMouseEnter={handleProfileMenuHover}
-                  onMouseLeave={handleProfileMenuLeave}>Profile</span>
+          <div className="profileMenu" onMouseLeave={handleProfileMenuLeave}>
+            <span className="menutext" onClick={handlePageToProfile} onMouseEnter={handleProfileMenuHover} >Profile</span>
             {showProfileMenu && (
-                <div className="profileMenuDropdown" onMouseEnter={handleProfileMenuHover}
-                     onMouseLeave={handleProfileMenuLeave}>
-                  <div className="profileMenuItem" onClick={handlePageToLogin} onMouseEnter={handleProfileMenuHover}
-                       onMouseLeave={handleProfileMenuLeave}>
+                <div className="profileMenuDropdown" onMouseEnter={handleProfileMenuHover} onMouseLeave={handleProfileMenuLeave}>
+                  <div className="profileMenuItem" onClick={handlePageToLogin} onMouseEnter={handleProfileMenuHover} onMouseLeave={handleProfileMenuLeave}>
                     Logout
                   </div>
                 </div>

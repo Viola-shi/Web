@@ -18,7 +18,7 @@ function MyPosts(props) {
                 <div className="myposts-board-header">
                 <span className = "myposts-board-title">My Posts</span>
                 </div>
-                <button className='back-button' onClick={handlePageToBoard}>Back To PublicBoard</button>
+                <button className='myposts-back-button' onClick={handlePageToBoard}>Back To PublicBoard</button>
             </div>
         </div>
     </div>
